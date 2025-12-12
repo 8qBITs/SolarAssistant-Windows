@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "qAlo/LnG4YM=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\8qBIT\\source\\repos\\test app 2\\test app 2\\SolarAssistantTray.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\8qBIT\\.nuget\\packages\\mqttnet\\5.0.0.1405\\mqttnet.5.0.0.1405.nupkg.sha512",
+    "C:\\Users\\8qBIT\\.nuget\\packages\\mqttnet.extensions.managedclient\\4.3.7.1207\\mqttnet.extensions.managedclient.4.3.7.1207.nupkg.sha512"
+  ],
+  "logs": []
+}

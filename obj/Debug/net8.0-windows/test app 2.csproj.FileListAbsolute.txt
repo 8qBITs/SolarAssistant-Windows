@@ -1,0 +1,18 @@
+C:\Users\8qBIT\source\repos\test app 2\test app 2\obj\Debug\net8.0-windows\test app 2.csproj.AssemblyReference.cache
+C:\Users\8qBIT\source\repos\test app 2\test app 2\obj\Debug\net8.0-windows\test app 2.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\8qBIT\source\repos\test app 2\test app 2\obj\Debug\net8.0-windows\test app 2.AssemblyInfoInputs.cache
+C:\Users\8qBIT\source\repos\test app 2\test app 2\obj\Debug\net8.0-windows\test app 2.AssemblyInfo.cs
+C:\Users\8qBIT\source\repos\test app 2\test app 2\obj\Debug\net8.0-windows\test app 2.csproj.CoreCompileInputs.cache
+C:\Users\8qBIT\source\repos\test app 2\test app 2\bin\Debug\net8.0-windows\test app 2.exe
+C:\Users\8qBIT\source\repos\test app 2\test app 2\bin\Debug\net8.0-windows\test app 2.deps.json
+C:\Users\8qBIT\source\repos\test app 2\test app 2\bin\Debug\net8.0-windows\test app 2.runtimeconfig.json
+C:\Users\8qBIT\source\repos\test app 2\test app 2\bin\Debug\net8.0-windows\test app 2.dll
+C:\Users\8qBIT\source\repos\test app 2\test app 2\bin\Debug\net8.0-windows\test app 2.pdb
+C:\Users\8qBIT\source\repos\test app 2\test app 2\bin\Debug\net8.0-windows\MQTTnet.dll
+C:\Users\8qBIT\source\repos\test app 2\test app 2\bin\Debug\net8.0-windows\MQTTnet.Extensions.ManagedClient.dll
+C:\Users\8qBIT\source\repos\test app 2\test app 2\obj\Debug\net8.0-windows\test app 2.csproj.Up2Date
+C:\Users\8qBIT\source\repos\test app 2\test app 2\obj\Debug\net8.0-windows\test app 2.dll
+C:\Users\8qBIT\source\repos\test app 2\test app 2\obj\Debug\net8.0-windows\refint\test app 2.dll
+C:\Users\8qBIT\source\repos\test app 2\test app 2\obj\Debug\net8.0-windows\test app 2.pdb
+C:\Users\8qBIT\source\repos\test app 2\test app 2\obj\Debug\net8.0-windows\test app 2.genruntimeconfig.cache
+C:\Users\8qBIT\source\repos\test app 2\test app 2\obj\Debug\net8.0-windows\ref\test app 2.dll
