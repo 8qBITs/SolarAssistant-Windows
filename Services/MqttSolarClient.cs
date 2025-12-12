@@ -15,10 +15,13 @@ namespace SolarTray.Services
         private IMqttClient? _client;
         private readonly MqttClientFactory _factory = new();
 
+        private MqttClientOptions? _options;
+
         public event Action? Connected;
         public event Action<string>? ConnectionFailed;
         public event Action<SolarSnapshot>? SnapshotUpdated;
 
+        // internal mutable state
         private readonly SolarSnapshot _snapshot = new();
 
         private const string PV_TOPIC = "solar_assistant/total/pv_power/state";
@@ -37,7 +40,16 @@ namespace SolarTray.Services
                 var payload = Encoding.UTF8.GetString(e.ApplicationMessage.Payload);
 
                 ApplyMessage(topic, payload);
-                SnapshotUpdated?.Invoke(_snapshot);
+
+                // IMPORTANT: emit a fresh object so UI always sees a "new" snapshot
+                SnapshotUpdated?.Invoke(new SolarSnapshot
+                {
+                    PvKw = _snapshot.PvKw,
+                    LoadKw = _snapshot.LoadKw,
+                    SocPercent = _snapshot.SocPercent,
+                    GridKw = _snapshot.GridKw,
+                    BatteryVolts = _snapshot.BatteryVolts
+                });
 
                 return Task.CompletedTask;
             };
@@ -56,13 +68,33 @@ namespace SolarTray.Services
                 Connected?.Invoke();
             };
 
-            var options = new MqttClientOptionsBuilder()
+            _options = new MqttClientOptionsBuilder()
                 .WithTcpServer(AppSettings.BrokerAddress, AppSettings.BrokerPort)
                 .WithClientId($"SolarTray-{Environment.MachineName}")
                 .WithCleanSession()
                 .Build();
 
-            var result = await _client.ConnectAsync(options, ct);
+            // Auto-reconnect loop on disconnect
+            _client.DisconnectedAsync += async _ =>
+            {
+                if (_client == null || _options == null) return;
+
+                // Try forever (simple + robust)
+                while (!_client.IsConnected)
+                {
+                    try
+                    {
+                        await Task.Delay(2000);
+                        await _client.ConnectAsync(_options, CancellationToken.None);
+                    }
+                    catch
+                    {
+                        // swallow and keep trying
+                    }
+                }
+            };
+
+            var result = await _client.ConnectAsync(_options, ct);
             if (result.ResultCode != MqttClientConnectResultCode.Success)
                 ConnectionFailed?.Invoke($"Solar: connect failed: {result.ResultCode}");
         }
@@ -85,7 +117,8 @@ namespace SolarTray.Services
             if (_client == null) return;
 
             try { await _client.DisconnectAsync(); } catch { /* ignore */ }
-            _client?.Dispose();
+            _client.Dispose();
+            _client = null;
         }
     }
 }
